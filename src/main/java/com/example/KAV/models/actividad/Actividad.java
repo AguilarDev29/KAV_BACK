@@ -2,7 +2,6 @@ package com.example.KAV.models.actividad;
 
 import com.example.KAV.models.*;
 import com.example.KAV.models.horario.Horario;
-import com.example.KAV.models.membresia.Membresia;
 import com.example.KAV.models.miembro.Miembro;
 import com.example.KAV.models.usuario.Usuario;
 import jakarta.persistence.*;
@@ -27,9 +26,6 @@ public class Actividad extends Base {
             inverseJoinColumns = @JoinColumn(name = "instructor_id")
     )
     private List<Miembro> instructores;
-    @ManyToOne
-    @JoinColumn(name = "membresia_id")
-    private Membresia membresia;
     @ManyToMany
     @JoinTable(
             name = "actividades_usuarios",

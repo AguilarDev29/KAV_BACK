@@ -1,7 +1,6 @@
 package com.example.KAV.models.miembro;
 
 import com.example.KAV.models.Base;
-import com.example.KAV.models.membresia.Membresia;
 import com.example.KAV.models.usuario.Usuario;
 import com.example.KAV.models.actividad.Actividad;
 import com.example.KAV.models.direccion.Direccion;
@@ -33,9 +32,6 @@ public class Miembro extends Base {
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "membresia_id")
-    private Membresia membresia;
     private Boolean esInstructor = false;
     @ManyToMany(mappedBy = "instructores")
     private List<Actividad> actividadACargo;

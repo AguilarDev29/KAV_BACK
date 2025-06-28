@@ -2,7 +2,6 @@ package com.example.KAV.models.usuario;
 
 import com.example.KAV.models.Base;
 import com.example.KAV.models.actividad.Actividad;
-import com.example.KAV.models.membresia.Membresia;
 import com.example.KAV.models.miembro.Miembro;
 import com.example.KAV.models.movimiento.Movimiento;
 import jakarta.persistence.*;
