@@ -38,10 +38,12 @@ public class UsuarioService implements IUsuarioService {
         var userToUpdate = usuarioRepository.findById(id);
 
         if(userToUpdate.isPresent()){
-            if(usuario.getUsername() != null) userToUpdate.get()
-                    .setUsername(usuario.getUsername());
-            if(usuario.getPassword() != null) userToUpdate.get()
-                    .setPassword(usuario.getPassword());
+            if(usuario.getApellido() != null) userToUpdate.get()
+                    .setApellido(usuario.getApellido());
+            if(usuario.getNombre() != null) userToUpdate.get()
+                    .setNombre(usuario.getNombre());
+            if(usuario.getEmail() != null) userToUpdate.get()
+                    .setEmail(usuario.getEmail());
             if(usuario.getRol() != null) userToUpdate.get()
                     .setRol(usuario.getRol());
             return usuarioRepository.save(userToUpdate.get());

@@ -1,47 +1,48 @@
 package com.example.KAV.models.actividad;
-
-import com.example.KAV.models.*;
 import com.example.KAV.models.horario.Horario;
-import com.example.KAV.models.membresia.Membresia;
-import com.example.KAV.models.miembro.Miembro;
 import com.example.KAV.models.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "actividades")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Actividad extends Base {
+@EqualsAndHashCode(of = "id")
 
-    private String nombre;
+public class Actividad{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @NotBlank
+    private String titulo;
+    @NotBlank
     private String descripcion;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "actividades_instructores",
             joinColumns = @JoinColumn(name = "actividad_id"),
             inverseJoinColumns = @JoinColumn(name = "instructor_id")
     )
-    private List<Miembro> instructores;
-    @ManyToOne
-    @JoinColumn(name = "membresia_id")
-    private Membresia membresia;
-    @ManyToMany
+    private Set<Usuario> instructores = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "actividades_usuarios",
             joinColumns = @JoinColumn(name = "actividad_id"),
             inverseJoinColumns = @JoinColumn(name = "usuario_id")
     )
-    private List<Usuario> usuarios;
-    @ManyToMany
+    private Set<Usuario> usuarios = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "actividad_horario",
             joinColumns = @JoinColumn(name = "actividad_id"),
             inverseJoinColumns = @JoinColumn(name = "horario_id")
     )
-    private List<Horario> horarios;
+    private Set<Horario> horarios = new HashSet<>();
+    private Double duracion;
 }

@@ -1,35 +1,31 @@
 package com.example.KAV.models.horario;
 
-import com.example.KAV.models.Base;
 import com.example.KAV.models.actividad.Actividad;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToMany;
+import com.example.KAV.models.enums.Dia;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "horarios")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Horario extends Base {
+@EqualsAndHashCode(of = "id")
+
+public class Horario{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Enumerated(EnumType.STRING)
     private Dia dia;
     private LocalTime hora;
-    @ManyToMany(mappedBy = "horarios")
-    private List<Actividad> actividades;
-    enum Dia {
-        LUNES,
-        MARTES,
-        MIERCOLES,
-        JUEVES,
-        VIERNES,
-        SABADO,
-        DOMINGO
-    }
+    @ManyToMany(mappedBy = "horarios", fetch = FetchType.LAZY)
+    private Set<Actividad> actividades = new HashSet<>();
 }
