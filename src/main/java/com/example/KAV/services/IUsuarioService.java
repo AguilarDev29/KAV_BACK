@@ -1,6 +1,8 @@
 package com.example.KAV.services;
 
 import com.example.KAV.models.usuario.Usuario;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -9,7 +11,7 @@ public interface IUsuarioService {
 
     Usuario getUser(Long id);
 
-    List<Usuario> getAllUsers();
+    Page<Usuario> getAllUsers(Pageable pageable);
 
     Usuario createUser(Usuario usuario);
 

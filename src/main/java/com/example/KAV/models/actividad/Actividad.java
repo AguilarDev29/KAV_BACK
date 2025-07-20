@@ -45,4 +45,11 @@ public class Actividad{
     )
     private Set<Horario> horarios = new HashSet<>();
     private Double duracion;
+    private Boolean activo;
+
+    @PrePersist
+    protected void onCreate(){
+        this.activo = true;
+    }
+
 }

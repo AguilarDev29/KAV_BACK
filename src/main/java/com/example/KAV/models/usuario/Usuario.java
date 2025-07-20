@@ -5,6 +5,7 @@ import com.example.KAV.models.enums.Rol;
 import com.example.KAV.models.enums.Sexo;
 import com.example.KAV.models.movimiento.Movimiento;
 import com.example.KAV.models.publicacion.Publicacion;
+import com.example.KAV.models.usuario.dto.DtoAltaUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -62,6 +63,16 @@ public class Usuario {
     private Set<Movimiento> movimientos = new HashSet<>();
     private LocalDateTime ultimoIngreso;
     private LocalDateTime ultimoEgreso;
+
+    public Usuario(DtoAltaUsuario usuario) {
+        this.apellido = usuario.apellido();
+        this.nombre = usuario.nombre();
+        this.dni = usuario.dni();
+        this.sexo = usuario.sexo();
+        this.email = usuario.email();
+        this.telefono = usuario.telefono();
+        this.rol = Rol.valueOf(usuario.rol());
+    }
 
     @PrePersist
     protected void onCreate(){
