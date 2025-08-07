@@ -14,9 +14,8 @@ public class QRCodeService {
 
     public BufferedImage generateQRCode(Usuario usuario) throws Exception {
 
-        String text = "http://192.168.68.50:8080/v1/user/" + usuario.getId();
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, 350, 350);
+        BitMatrix bitMatrix = qrCodeWriter.encode(usuario.toString(), BarcodeFormat.QR_CODE, 350, 350);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
 }

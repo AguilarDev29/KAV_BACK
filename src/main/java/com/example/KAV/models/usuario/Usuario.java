@@ -1,8 +1,9 @@
 package com.example.KAV.models.usuario;
 import com.example.KAV.models.actividad.Actividad;
 import com.example.KAV.models.direccion.Direccion;
-import com.example.KAV.models.enums.Rol;
-import com.example.KAV.models.enums.Sexo;
+import com.example.KAV.models.usuario.dto.DtoDatosUsuario;
+import com.example.KAV.utils.enums.Rol;
+import com.example.KAV.utils.enums.Sexo;
 import com.example.KAV.models.movimiento.Movimiento;
 import com.example.KAV.models.publicacion.Publicacion;
 import com.example.KAV.models.usuario.dto.DtoAltaUsuario;
@@ -63,21 +64,25 @@ public class Usuario {
     private Set<Movimiento> movimientos = new HashSet<>();
     private LocalDateTime ultimoIngreso;
     private LocalDateTime ultimoEgreso;
+    private Boolean ingresoActivo;
 
     public Usuario(DtoAltaUsuario usuario) {
         this.apellido = usuario.apellido();
         this.nombre = usuario.nombre();
         this.dni = usuario.dni();
         this.sexo = usuario.sexo();
+        this.fechaNacimiento = usuario.fechaNacimiento();
         this.email = usuario.email();
         this.telefono = usuario.telefono();
-        this.rol = Rol.valueOf(usuario.rol());
+        this.rol = usuario.rol();
     }
+
 
     @PrePersist
     protected void onCreate(){
         this.activo = true;
-        this.rol = Rol.USER;
+        if(this.rol == null) this.rol = Rol.USER;
+        this.ingresoActivo = false;
     }
 
 }

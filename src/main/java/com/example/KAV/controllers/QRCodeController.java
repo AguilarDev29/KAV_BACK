@@ -1,6 +1,6 @@
 package com.example.KAV.controllers;
 
-import com.example.KAV.services.IUsuarioService;
+import com.example.KAV.services.usuario.IUsuarioService;
 import com.example.KAV.services.QRCodeService;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,6 +1,7 @@
 package com.example.KAV.models.publicacion;
-import com.example.KAV.models.enums.TipoPublicacion;
+import com.example.KAV.utils.enums.TipoPublicacion;
 import com.example.KAV.models.usuario.Usuario;
+import com.example.KAV.services.publicacion.dto.DtoDatosPublicacion;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -28,4 +29,9 @@ public class Publicacion {
     @Column(nullable = false, name = "tipo_publicacion")
     private TipoPublicacion tipoPublicacion;
 
+    public Publicacion(DtoDatosPublicacion publicacion) {
+        this.titulo = publicacion.titulo();
+        this.descripcion = publicacion.descripcion();
+        this.imagen = publicacion.imagen();
+    }
 }

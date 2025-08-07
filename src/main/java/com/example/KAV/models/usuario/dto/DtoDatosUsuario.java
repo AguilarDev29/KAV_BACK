@@ -1,6 +1,6 @@
 package com.example.KAV.models.usuario.dto;
 
-import com.example.KAV.models.enums.Rol;
+import com.example.KAV.utils.enums.Rol;
 import com.example.KAV.models.usuario.Usuario;
 
 public record DtoDatosUsuario(

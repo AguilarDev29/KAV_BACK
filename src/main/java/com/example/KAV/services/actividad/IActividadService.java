@@ -1,4 +1,4 @@
-package com.example.KAV.services;
+package com.example.KAV.services.actividad;
 
 import com.example.KAV.models.actividad.Actividad;
 import com.example.KAV.models.horario.Horario;
@@ -22,7 +22,9 @@ public interface IActividadService {
 
     Actividad addOrRemoveHorario(Horario horario, Long id, Boolean add);
 
-    void logicalDeleteActividad(Long id)
+    Actividad addOrRemoveUsuario(Usuario usuario, Long id, Boolean add);
+
+    void logicalDeleteActividad(Long id);
 
     void deleteActividad(Long id);
 

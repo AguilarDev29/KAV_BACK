@@ -1,5 +1,5 @@
 package com.example.KAV.models.usuario.dto;
-import com.example.KAV.models.enums.Sexo;
+import com.example.KAV.utils.enums.Sexo;
 
 import java.time.LocalDate;
 

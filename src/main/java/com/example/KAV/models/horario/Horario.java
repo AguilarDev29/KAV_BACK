@@ -1,14 +1,12 @@
 package com.example.KAV.models.horario;
 
 import com.example.KAV.models.actividad.Actividad;
-import com.example.KAV.models.enums.Dia;
+import com.example.KAV.utils.enums.Dia;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
